@@ -26,7 +26,7 @@ def main():
             email="oelo.lopez@example.com"
         )
         if repo_pacientes.crear(nuevo_paciente):
-            print("Paciente 'Maria Lopez' creado exitosamente.")
+            print("Paciente creado exitosamente.")
         else:
             print("Falló la creación del paciente.")
 
