@@ -3,11 +3,7 @@ from Repositorios.Conexion import SessionLocal, PacientesRepositorio, Pacientes,
 from datetime import datetime
 
 def main():
-    """
-    Función principal para probar la conexión y las operaciones con Stored Procedures.
-    """
-    print("--- Iniciando prueba con Stored Procedures ---")
-    
+
     # Verifica la conexión
     inicializar_db()
 
@@ -52,14 +48,6 @@ def main():
             print(f"Encontrado: {paciente_uno.nombres} {paciente_uno.apellidos}")
         else:
             print("No se encontró paciente con ID 1.")
-
-        # --- Prueba de Eliminación ---
-        # (Cuidado: esto borrará un registro)
-        # print("\n[Prueba de Eliminación] Eliminando paciente con ID 2...")
-        # if repo_pacientes.eliminar(2):
-        #     print("Paciente con ID 2 eliminado exitosamente.")
-        # else:
-        #     print("Falló la eliminación del paciente con ID 2.")
 
     except Exception as e:
         print(f"\nOcurrió un error durante la prueba: {e}")

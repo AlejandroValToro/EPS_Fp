@@ -3,7 +3,7 @@ from sqlalchemy.orm import sessionmaker, declarative_base, relationship
 from sqlalchemy.exc import SQLAlchemyError
 from datetime import datetime
 
-# --- CONFIGURACIÓN DE LA BASE DE DATOS ---
+# --- Datos de conexion de la base de datos ---
 DB_USER = "user_ptyhon"
 DB_PASSWORD = "Clas3s1Nt2024_!"
 DB_HOST = "localhost"
@@ -16,7 +16,7 @@ engine = create_engine(DATABASE_URL, echo=False)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 Base = declarative_base()
 
-# --- DEFINICIÓN DE MODELOS (ORM) ---
+# --- Modelo de la base de datos---
 class Pacientes(Base):
     __tablename__ = 'Pacientes'
     id_paciente = Column(Integer, primary_key=True)
@@ -150,7 +150,7 @@ class Horarios(Base):
     hora_inicio = Column(TIME)
     hora_fin = Column(TIME)
 
-# --- REPOSITORIO BASE ---
+
 class RepositorioBase:
     def __init__(self, session, model):
         self.session = session
@@ -192,7 +192,7 @@ class RepositorioBase:
             print(f"Error en {sp_name}: {e}")
             return False
 
-# --- REPOSITORIOS ESPECÍFICOS ---
+# --- Repositorio ---
 
 class PacientesRepositorio(RepositorioBase):
     def __init__(self, session):
@@ -584,7 +584,7 @@ class HorariosRepositorio(RepositorioBase):
             print(f"Error al actualizar Horario: {err}")
             return False
 
-# --- FUNCIÓN PARA INICIALIZAR LA BASE DE DATOS ---
+# ---  inicio de la conexion base de datos ---
 def inicializar_db():
     try:
         connection = engine.connect()

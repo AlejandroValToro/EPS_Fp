@@ -1,4 +1,4 @@
--- Creación de tablas para sistema EPS
+-- Creación de tablas EPS
 
 CREATE TABLE IF NOT EXISTS Pacientes (
     id_paciente INT PRIMARY KEY AUTO_INCREMENT,
@@ -147,9 +147,7 @@ CREATE TABLE IF NOT EXISTS Horarios (
     FOREIGN KEY (id_medico) REFERENCES Medicos(id_medico)
 );
 
--- -----------------------------------------------------
--- Stored Procedures
--- -----------------------------------------------------
+-- Stored Procedures--
 
 -- Pacientes
 DELIMITER $$
