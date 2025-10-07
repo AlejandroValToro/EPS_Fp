@@ -3,6 +3,7 @@ from datetime import datetime
 
 def main():
 
+    # Verifica la conexión
     inicializar_db()
 
     db_session = SessionLocal()
@@ -43,14 +44,6 @@ def main():
             print(f"Encontrado: {paciente_uno.nombres} {paciente_uno.apellidos}")
         else:
             print("No se encontró paciente con ID 1.")
-
-        # --- Prueba de Eliminación ---
-        # (Cuidado: esto borrará un registro)
-        # print("Eliminando paciente con ID 2.")
-        # if repo_pacientes.eliminar(2):
-        #     print("Paciente con ID 2 eliminado exitosamente.")
-        # else:
-        #     print("Falló la eliminación del paciente con ID 2.")
 
     except Exception as e:
         print(f"Ocurrió un error durante la prueba: {e}")
