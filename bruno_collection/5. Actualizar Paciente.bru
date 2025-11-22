@@ -1,0 +1,29 @@
+meta {
+  name: 5. Actualizar Paciente
+  type: http
+  seq: 5
+}
+
+put {
+  url: http://localhost:5000/pacientes/36
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:json {
+  {
+    "documento": "9876543210",
+    "tipo_documento": "CC",
+    "nombres": "Juan Carlos ACTUALIZADO",
+    "apellidos": "Perez Garcia",
+    "fecha_nacimiento": "1990-05-15",
+    "genero": "M",
+    "direccion": "Avenida 100 #50-25",
+    "telefono": "3209999999",
+    "email": "juan.updated@email.com"
+  }
+}

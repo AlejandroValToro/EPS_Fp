@@ -1,0 +1,29 @@
+meta {
+  name: 2. Crear Paciente
+  type: http
+  seq: 2
+}
+
+post {
+  url: http://localhost:5000/pacientes/
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:json {
+  {
+    "documento": "1234567890",
+    "tipo_documento": "CC",
+    "nombres": "Juan Carlos",
+    "apellidos": "Perez Garcia",
+    "fecha_nacimiento": "1990-05-15",
+    "genero": "M",
+    "direccion": "Calle 123 #45-67",
+    "telefono": "3001234567",
+    "email": "juan.perez@email.com"
+  }
+}

@@ -1,0 +1,15 @@
+meta {
+  name: 6. Eliminar Paciente
+  type: http
+  seq: 6
+}
+
+delete {
+  url: http://localhost:5000/pacientes/36
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}

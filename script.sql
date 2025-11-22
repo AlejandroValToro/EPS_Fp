@@ -2,15 +2,15 @@
 
 CREATE TABLE IF NOT EXISTS Pacientes (
     id_paciente INT PRIMARY KEY AUTO_INCREMENT,
-    documento VARCHAR(20) NOT NULL,
+    documento VARCHAR(255) NOT NULL,
     tipo_documento ENUM('CC', 'CE', 'TI', 'RC') NOT NULL,
-    nombres VARCHAR(50) NOT NULL,
-    apellidos VARCHAR(50) NOT NULL,
+    nombres VARCHAR(255) NOT NULL,
+    apellidos VARCHAR(255) NOT NULL,
     fecha_nacimiento DATE NOT NULL,
     genero ENUM('M', 'F', 'O') NOT NULL,
-    direccion VARCHAR(100),
-    telefono VARCHAR(15),
-    email VARCHAR(50),
+    direccion VARCHAR(255),
+    telefono VARCHAR(255),
+    email VARCHAR(255),
     fecha_registro DATETIME DEFAULT CURRENT_TIMESTAMP
 );
 
@@ -22,13 +22,13 @@ CREATE TABLE IF NOT EXISTS Especialidades (
 
 CREATE TABLE IF NOT EXISTS Medicos (
     id_medico INT PRIMARY KEY AUTO_INCREMENT,
-    documento VARCHAR(20) NOT NULL,
-    nombres VARCHAR(50) NOT NULL,
-    apellidos VARCHAR(50) NOT NULL,
+    documento VARCHAR(255) NOT NULL,
+    nombres VARCHAR(255) NOT NULL,
+    apellidos VARCHAR(255) NOT NULL,
     id_especialidad INT,
-    telefono VARCHAR(15),
-    email VARCHAR(50),
-    tarjeta_profesional VARCHAR(20) NOT NULL,
+    telefono VARCHAR(255),
+    email VARCHAR(255),
+    tarjeta_profesional VARCHAR(255) NOT NULL,
     FOREIGN KEY (id_especialidad) REFERENCES Especialidades(id_especialidad)
 );
 
@@ -91,9 +91,9 @@ CREATE TABLE IF NOT EXISTS Departamentos (
 
 CREATE TABLE IF NOT EXISTS Empleados (
     id_empleado INT PRIMARY KEY AUTO_INCREMENT,
-    documento VARCHAR(20) NOT NULL,
-    nombres VARCHAR(50) NOT NULL,
-    apellidos VARCHAR(50) NOT NULL,
+    documento VARCHAR(255) NOT NULL,
+    nombres VARCHAR(255) NOT NULL,
+    apellidos VARCHAR(255) NOT NULL,
     id_departamento INT,
     cargo VARCHAR(50),
     fecha_contratacion DATE,
@@ -104,7 +104,7 @@ CREATE TABLE IF NOT EXISTS Laboratorios (
     id_laboratorio INT PRIMARY KEY AUTO_INCREMENT,
     nombre VARCHAR(100) NOT NULL,
     direccion VARCHAR(100),
-    telefono VARCHAR(15)
+    telefono VARCHAR(255)
 );
 
 CREATE TABLE IF NOT EXISTS ExamenesLaboratorio (
@@ -165,15 +165,15 @@ END$$
 
 DROP PROCEDURE IF EXISTS proc_insert_Pacientes$$
 CREATE PROCEDURE proc_insert_Pacientes(
-    IN _documento VARCHAR(20),
+    IN _documento VARCHAR(255),
     IN _tipo_documento ENUM('CC', 'CE', 'TI', 'RC'),
-    IN _nombres VARCHAR(50),
-    IN _apellidos VARCHAR(50),
+    IN _nombres VARCHAR(255),
+    IN _apellidos VARCHAR(255),
     IN _fecha_nacimiento DATE,
     IN _genero ENUM('M', 'F', 'O'),
-    IN _direccion VARCHAR(100),
-    IN _telefono VARCHAR(15),
-    IN _email VARCHAR(50),
+    IN _direccion VARCHAR(255),
+    IN _telefono VARCHAR(255),
+    IN _email VARCHAR(255),
     INOUT _Respuesta INT
 )
 BEGIN
@@ -185,15 +185,15 @@ END$$
 DROP PROCEDURE IF EXISTS proc_update_Pacientes$$
 CREATE PROCEDURE proc_update_Pacientes(
     IN _id_paciente INT,
-    IN _documento VARCHAR(20),
+    IN _documento VARCHAR(255),
     IN _tipo_documento ENUM('CC', 'CE', 'TI', 'RC'),
-    IN _nombres VARCHAR(50),
-    IN _apellidos VARCHAR(50),
+    IN _nombres VARCHAR(255),
+    IN _apellidos VARCHAR(255),
     IN _fecha_nacimiento DATE,
     IN _genero ENUM('M', 'F', 'O'),
-    IN _direccion VARCHAR(100),
-    IN _telefono VARCHAR(15),
-    IN _email VARCHAR(50)
+    IN _direccion VARCHAR(255),
+    IN _telefono VARCHAR(255),
+    IN _email VARCHAR(255)
 )
 BEGIN
     UPDATE Pacientes
@@ -274,13 +274,13 @@ END$$
 
 DROP PROCEDURE IF EXISTS proc_insert_Medicos$$
 CREATE PROCEDURE proc_insert_Medicos(
-    IN _documento VARCHAR(20),
-    IN _nombres VARCHAR(50),
-    IN _apellidos VARCHAR(50),
+    IN _documento VARCHAR(255),
+    IN _nombres VARCHAR(255),
+    IN _apellidos VARCHAR(255),
     IN _id_especialidad INT,
-    IN _telefono VARCHAR(15),
-    IN _email VARCHAR(50),
-    IN _tarjeta_profesional VARCHAR(20),
+    IN _telefono VARCHAR(255),
+    IN _email VARCHAR(255),
+    IN _tarjeta_profesional VARCHAR(255),
     INOUT _Respuesta INT
 )
 BEGIN
@@ -292,13 +292,13 @@ END$$
 DROP PROCEDURE IF EXISTS proc_update_Medicos$$
 CREATE PROCEDURE proc_update_Medicos(
     IN _id_medico INT,
-    IN _documento VARCHAR(20),
-    IN _nombres VARCHAR(50),
-    IN _apellidos VARCHAR(50),
+    IN _documento VARCHAR(255),
+    IN _nombres VARCHAR(255),
+    IN _apellidos VARCHAR(255),
     IN _id_especialidad INT,
-    IN _telefono VARCHAR(15),
-    IN _email VARCHAR(50),
-    IN _tarjeta_profesional VARCHAR(20)
+    IN _telefono VARCHAR(255),
+    IN _email VARCHAR(255),
+    IN _tarjeta_profesional VARCHAR(255)
 )
 BEGIN
     UPDATE Medicos
@@ -630,9 +630,9 @@ END$$
 
 DROP PROCEDURE IF EXISTS proc_insert_Empleados$$
 CREATE PROCEDURE proc_insert_Empleados(
-    IN _documento VARCHAR(20),
-    IN _nombres VARCHAR(50),
-    IN _apellidos VARCHAR(50),
+    IN _documento VARCHAR(255),
+    IN _nombres VARCHAR(255),
+    IN _apellidos VARCHAR(255),
     IN _id_departamento INT,
     IN _cargo VARCHAR(50),
     IN _fecha_contratacion DATE,
@@ -647,9 +647,9 @@ END$$
 DROP PROCEDURE IF EXISTS proc_update_Empleados$$
 CREATE PROCEDURE proc_update_Empleados(
     IN _id_empleado INT,
-    IN _documento VARCHAR(20),
-    IN _nombres VARCHAR(50),
-    IN _apellidos VARCHAR(50),
+    IN _documento VARCHAR(255),
+    IN _nombres VARCHAR(255),
+    IN _apellidos VARCHAR(255),
     IN _id_departamento INT,
     IN _cargo VARCHAR(50),
     IN _fecha_contratacion DATE
@@ -688,7 +688,7 @@ DROP PROCEDURE IF EXISTS proc_insert_Laboratorios$$
 CREATE PROCEDURE proc_insert_Laboratorios(
     IN _nombre VARCHAR(100),
     IN _direccion VARCHAR(100),
-    IN _telefono VARCHAR(15),
+    IN _telefono VARCHAR(255),
     INOUT _Respuesta INT
 )
 BEGIN
@@ -702,7 +702,7 @@ CREATE PROCEDURE proc_update_Laboratorios(
     IN _id_laboratorio INT,
     IN _nombre VARCHAR(100),
     IN _direccion VARCHAR(100),
-    IN _telefono VARCHAR(15)
+    IN _telefono VARCHAR(255)
 )
 BEGIN
     UPDATE Laboratorios
@@ -916,4 +916,4 @@ DROP PROCEDURE IF EXISTS proc_delete_Horarios$$
 CREATE PROCEDURE proc_delete_Horarios(IN _id_horario INT)
 BEGIN
     DELETE FROM Horarios WHERE id_horario = _id_horario;
-END$$;
+END$$

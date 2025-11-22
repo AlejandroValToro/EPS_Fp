@@ -1,0 +1,15 @@
+meta {
+  name: 4. Buscar Paciente por ID
+  type: http
+  seq: 4
+}
+
+get {
+  url: http://localhost:5000/pacientes/36
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}
